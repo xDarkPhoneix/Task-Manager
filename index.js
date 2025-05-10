@@ -23,6 +23,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.static("public"))
+app.use(cookieParser())
 
 app.listen(process.env.PORT || 8000,()=>{
     console.log(`Server listening on port : ${process.env.API_BASE_URL}`);
