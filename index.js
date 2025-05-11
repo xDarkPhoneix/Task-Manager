@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import dotenv from "dotenv"
 import connectDB from "./src/db/connectDB.js"
+import path from "path"
 const app=express()
 
 dotenv.config({
@@ -31,9 +32,9 @@ app.listen(process.env.PORT || 8000,()=>{
 })
 
 
-app.get("/",(req,res)=>{
-    res.send("Server is ready")
-})
+// app.get("/",(req,res)=>{
+//     res.send("Server is ready")
+// })
 
 //*****************   User Router                             ********************************/
 
@@ -46,3 +47,24 @@ app.use("/api/v1/users",userRouter)
 //*****************  Task Router                              ********************************/
 import taskRouter from "./src/routes/task.routes.js"
 app.use("/api/v1/task",taskRouter)
+
+
+
+// ---------Deployment Code---------
+const _dirname1=path.resolve();
+if(process.env.NODE_ENV==="development"){
+  console.log(process.env.NODE_ENV);
+  
+  app.use(express.static(path.join(_dirname1,"frontend/dist")))
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(_dirname1,"frontend","dist","index.html"))
+  })
+
+}else{
+
+app.get("/", (req, res) => {
+  res.send("server is ready");
+});
+
+}
+//------------------------------------------------
