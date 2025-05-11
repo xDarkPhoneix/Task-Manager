@@ -3,7 +3,7 @@ import axios from "axios"
 
 export class AuthService{
 
-    API_END_POINT="http://localhost:8000/api/v1"                                       //"https://eventmanagement-urhj.onrender.com/api/v1"
+    API_END_POINT="https://eventmanagement-urhj.onrender.com"                                       //"https://eventmanagement-urhj.onrender.com/api/v1"
 
     
     async login(data){

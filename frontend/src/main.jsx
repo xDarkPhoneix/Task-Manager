@@ -33,7 +33,7 @@ const router=createBrowserRouter([
         element:<Home/>
       },
       {
-        path:"add-task",
+        path:"addtask",
         element:<AddTask/>
       },
       {
@@ -41,7 +41,7 @@ const router=createBrowserRouter([
         element:<TaskCard/>
       },
       {
-        path:"/edit-task/:id",
+        path:"/edittask/:taskid",
         element:<EditTask/>
       }
     ]

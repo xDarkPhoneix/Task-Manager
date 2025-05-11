@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import taskService from '@/services/taskService';
 
 function  EditTask () {
-    const {id}=useParams()
+    const {taskid}=useParams()
     const [updateTask,setTask]=useState("")
     const navigate=useNavigate()
 
@@ -21,7 +21,7 @@ function  EditTask () {
     },[])
     return updateTask? (
       <div>
-        <AddTask id={id} updateTask={updateTask}/>
+        <AddTask id={taskid} updateTask={updateTask}/>
      </div>
     ):(<>Loadin..</>)
 }

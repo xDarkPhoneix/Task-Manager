@@ -1,11 +1,8 @@
 import axios from "axios"
 
-
-
-
 export class TaskService{
 
-     API_END_POINT="http://localhost:8000/api/v1"
+     API_END_POINT="https://eventmanagement-urhj.onrender.com" 
 
      async getTask(userData){
         
