@@ -13,7 +13,7 @@ dotenv.config({
 connectDB()
 
 var corsOptions = {
-    origin: "*" || "https://eventmanagement-urhj.onrender.com0" || "http://localhost:8000/api/v1",
+    origin: "*" || "https://task-manager-sagg.onrender.com" || "http://localhost:8000/api/v1",
      methods:[ 'GET, POST, PUT, DELETE, OPTIONS'],
      credentials:true,
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
