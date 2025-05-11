@@ -60,11 +60,83 @@ const getTask=asynchandler(async(req,res)=>{
 
 })
 
+const updateTask=asynchandler(async(req,res)=>{
+    const {title,description,status,id}=req.body
+
+
+        if([title,status,description,id].some((field)=>field?.trim()==="")){
+            throw new API_ERROR(400,"Please Enter all the fields")
+        }
+    
+        const updatedTask= await Task.findByIdAndUpdate(
+            id,
+         {
+           $set:{
+            title:title,
+            description:description,
+            status:status,
+           }
+         },
+         {
+            $new:true
+         }
+        ).select("-password")
+    
+
+    if(!updatedTask){
+        throw new API_ERROR(400,"Failed to update Task")
+    }  
+
+    res.status(201).json(new ApiResponse(200,"Task Updated Successfully"),updatedTask)
+})
+
+
+const delteTask=asynchandler(async(req,res)=>{
+  
+    const {id}=req.body
+
+    if(!id){
+        throw new API_ERROR(400,"Id not provided")
+    }
+ 
+    const deletedTask=await Task.deleteOne({_id:id})
+    
+    if(!deletedTask){
+        throw new API_ERROR(400,"Failed to delete Task")
+    }
+
+    res.status(201).json(new ApiResponse(200,"Task Deleted Successfully",deletedTask))
+    
+
+
+})
+
+const getTaskById=asynchandler(async(req,res)=>{
+ 
+    const {id}=req.body
+
+    if(!id){
+        throw new API_ERROR(400,"Id not provided")
+    }
+
+    const task=await Task.findById(id)
+
+    if(!task){
+        throw new API_ERROR(400,"Failed to fetch Task")
+    }
+  
+
+    res.status(201).json(new ApiResponse(200,"Task Fetched",task))
+
+})
 
 
 
 export {
     createTask,
-    getTask
+    getTask,
+    updateTask,
+    delteTask,
+    getTaskById
 }
 

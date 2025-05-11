@@ -46,7 +46,7 @@ function  Signup () {
 
         <div className='w-full mt-6 flex justify-center items-center'>
         <div className="w-full m-1 md:w-2/4 flex justify-center items-center">
-         <form className="space-y-5 bg-slate-100  rounded-md p-10" onSubmit={handleSubmit(create)}>
+         <form className="space-y-5 m-2 bg-slate-100  rounded-md p-10" onSubmit={handleSubmit(create)}>
                           
                  <div className="w-full flex items-center justify-center">
                  <Logo/>

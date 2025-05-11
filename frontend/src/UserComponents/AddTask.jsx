@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import { Input } from '@/components/ui/input';
 import Logo from './Logo';
@@ -10,23 +10,44 @@ import Dropdown from './Dropdown';
 import { Textarea } from '@/components/ui/textarea';
 import taskService from '@/services/taskService';
 
-function  AddTask () {
-  const {register,handleSubmit}=useForm()
+function  AddTask ({updateTask,id}) {
+  const {register,handleSubmit}=useForm({
+    defaultValues:{
+      title: updateTask?.title || "",
+      description:updateTask?.description || ""
+      
+     }
+  })
     const userData=useSelector((state)=>state.auth.userData)
     const [status,setStatus]=useState("")
     const [loading,setLoading]=useState(false)
     const navigate=useNavigate()
 
+
+    useEffect(()=>{
+      console.log(updateTask);
+      
+    },[])
+
     const create=async(data)=>{
      try {
       setLoading(true)
       const accessToken=userData.data.accessToken
+
+     if(updateTask){
+
+      const task=await taskService.updateTask(id,status,accessToken,data)
+      setLoading(false)
+      navigate("/")
+
+     }else{
       const task= await taskService.createTask(data,status,accessToken)
       setLoading(false)
        if(task){
         navigate("/")
        }
-       } catch (error) {
+    }
+      } catch (error) {
        setLoading(false)
         throw error 
     } 
@@ -35,11 +56,14 @@ function  AddTask () {
 
     const handleSelect=(selectedOption)=>{
       console.log("Selected Status:", selectedOption);
+      if(updateTask){
+        setStatus(updateTask?.status)
+      }
       setStatus(selectedOption)
     }
 
     return (
-        <div className='w-full mt-6 flex justify-center items-center'>
+        <div className='w-full  mt-6 flex justify-center items-center'>
         <div className="w-full m-1 md:w-full flex justify-center items-center">
          <form className="space-y-5 md:w-1/4 bg-slate-100  rounded-md p-10" onSubmit={handleSubmit(create)}>
                           
@@ -72,7 +96,8 @@ function  AddTask () {
                     </div>
                    <div> 
                    </div>
-                    <Button type="submit" className="w-full bg-slate-900" >{loading ? (<><Spinner/></>): (<> Create Task</>)}</Button>
+                   
+                    <Button type="submit" className="w-full bg-slate-900" >{loading ? (<><Spinner/></>): (<>{updateTask ? (<>Update Task</>):(<>Create Task</>)} </>)}</Button>
                 </form>
                 </div>
                 </div>

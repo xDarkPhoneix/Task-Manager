@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function  TaskComp ({title="hola",status="To Do",id=""}) {
+function  TaskComp ({title="hola",status="To Do",id="",createdAt=""}) {
      const navigate=useNavigate()
-
+     
 
     return (
         <div className='flex  mt-2  items-center justify-center text-white'>

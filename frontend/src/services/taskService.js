@@ -2,6 +2,7 @@ import axios from "axios"
 
 
 
+
 export class TaskService{
 
      API_END_POINT="http://localhost:8000/api/v1"
@@ -43,6 +44,53 @@ export class TaskService{
 
         
         return task.data
+
+     }
+
+     async getTaskById(id){
+        
+      
+        const config={
+            headers:{
+                 "Content-Type":"application/json"
+            }
+        }
+        const data=await axios.post(`${this.API_END_POINT}/task/getTaskById`,{id},config)
+
+        return data.data
+     }
+    
+     async deleteTask(id,accessToken){
+        const config={
+            headers:{
+                Authorization:`Bearer ${accessToken}`
+            }
+        }
+
+        const task=await axios.post(`${this.API_END_POINT}/task/deleteTask`,{id},config)
+
+        return task;
+
+     }
+
+
+     async updateTask(id,status,accessToken,data){
+
+        const config={
+            headers:{
+                Authorization:`Bearer ${accessToken}`
+            }
+        }
+
+        const task=await axios.post(`${this.API_END_POINT}/task/updateTask`,{
+            id,
+            title:data.title,
+            description:data.description,
+            status:status
+        
+        },config)
+
+        return task.data;
 
      }
 

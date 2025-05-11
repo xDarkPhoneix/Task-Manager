@@ -11,6 +11,7 @@ import store from "./store/store.js"
 import Home from './UserComponents/Home'
 import AddTask from './UserComponents/AddTask'
 import TaskCard from './UserComponents/TaskCard'
+import EditTask from './UserComponents/EditTask'
 
 
 const router=createBrowserRouter([
@@ -38,6 +39,10 @@ const router=createBrowserRouter([
       {
         path:"/task/:id",
         element:<TaskCard/>
+      },
+      {
+        path:"/edit-task/:id",
+        element:<EditTask/>
       }
     ]
   } 

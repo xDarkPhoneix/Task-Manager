@@ -11,7 +11,15 @@ import Spinner from './Spinner';
 
 function  Login () {
 
-    const {handleSubmit,register,control}=useForm()
+    const {handleSubmit,register,control,setValue}=useForm(
+        {
+            defaultValues:{
+                email:"",
+                password:""
+                
+               }
+    }
+    )
     const [loading,setLoading]=useState(false)
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -36,9 +44,9 @@ function  Login () {
     }
 
     return (
-      <div className="w-full m-5 mt-6 flex justify-center items-center">
+      <div className="w-full m-3 mt-6 flex justify-center items-center">
 
-      <div className="w-full  md:w-1/4 flex justify-center items-center">
+      <div className="w-full flex justify-center items-center">
       <form className="space-y-5 bg-slate-100  rounded-md p-10" onSubmit={handleSubmit(login)}>
                   
                   
@@ -75,6 +83,17 @@ function  Login () {
                   })}
                   
                   />
+
+                 <Button
+                    className="w-full bg-slate-900"
+                     onClick={() => {
+                     setValue("email","queen@gmail.com");
+                     setValue("password","lola");
+                     }}
+                      >
+                     Get Guest User Credentials
+                    
+                    </Button>
                
 
                <Button type="submit" className="w-full bg-slate-900" >{loading ? (<><Spinner/></>): (<> Login</>)}</Button>

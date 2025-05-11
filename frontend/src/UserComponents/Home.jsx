@@ -11,13 +11,16 @@ function  Home () {
   const [task,setTask]=useState([])
    const [status,setStatus]=useState("All")
    const [filtered,setFiltered]=useState(false)
+   
   
 
 const getTask=async()=>{
 
-   const taskData= await taskService.getTask(userData)
+   if(userData){
+    const taskData= await taskService.getTask(userData)
    console.log(taskData);
    setTask(taskData.data)
+   }
    
 
   }
@@ -49,7 +52,7 @@ const getTask=async()=>{
           {(filtered ? task.filter((t)=>t.status===status) : task)
           .map((t)=>(
               <div key={t._id}>
-              <TaskComp key={t._id} status={t.status} title={t.title} id={t._id} />
+              <TaskComp key={t._id} status={t.status} title={t.title} id={t._id}  createdAt={t.createdAt} />
              </div>
           ))}
 
