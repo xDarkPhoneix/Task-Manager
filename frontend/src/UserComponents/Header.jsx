@@ -33,7 +33,7 @@ function  Header () {
         },
         {
             name: "Add Task",
-            slug: "/add-task",
+            slug: "/addtask",
             active: authStatus,
         },
 

@@ -68,7 +68,7 @@ function  TaskCard () {
           <div className="flex gap-2">
             <Button variant="outline" size="sm" 
              onClick={()=>{
-                navigate(`/edit-task/${id}`)
+                navigate(`/edittask/${id}`)
                }}
             >
               Edit

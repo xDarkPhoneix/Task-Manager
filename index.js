@@ -51,20 +51,5 @@ app.use("/api/v1/task",taskRouter)
 
 
 // ---------Deployment Code---------
-const _dirname1=path.resolve();
-if(process.env.NODE_ENV==="development"){
-  console.log(process.env.NODE_ENV);
-  
-  app.use(express.static(path.join(_dirname1,"frontend/dist")))
-  app.get("*",(req,res)=>{
-    res.sendFile(path.resolve(_dirname1,"frontend","dist","index.html"))
-  })
 
-}else{
-
-app.get("/", (req, res) => {
-  res.send("server is ready");
-});
-
-}
 //------------------------------------------------
