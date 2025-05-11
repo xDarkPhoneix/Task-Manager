@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import store from "./store/store.js"
 import Home from './UserComponents/Home'
 import AddTask from './UserComponents/AddTask'
+import TaskCard from './UserComponents/TaskCard'
 
 
 const router=createBrowserRouter([
@@ -33,6 +34,10 @@ const router=createBrowserRouter([
       {
         path:"add-task",
         element:<AddTask/>
+      },
+      {
+        path:"/task/:id",
+        element:<TaskCard/>
       }
     ]
   } 

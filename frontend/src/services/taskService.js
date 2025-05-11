@@ -1,6 +1,7 @@
 import axios from "axios"
 
 
+
 export class TaskService{
 
      API_END_POINT="http://localhost:8000/api/v1"
@@ -21,6 +22,27 @@ export class TaskService{
         console.log(task);
         return task.data
         
+
+     }
+
+     async createTask(data,status,accessToken){
+
+        const config={
+            headers:{
+                Authorization:`Bearer ${accessToken}`
+            }
+        }
+
+        const task=await axios.post(`${this.API_END_POINT}/task`,{
+            title:data.title,
+            description:data.description,
+            status:status    
+
+
+        },config)
+
+        
+        return task.data
 
      }
 

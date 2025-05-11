@@ -4,12 +4,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function  LogoutBtn () {
-   
+    const userData=useSelector((state)=>state.auth.userData)
     const dispatch=useDispatch()
  
-    const logoutHandler=()=>{
-      
-        dispatch(logout())
+    const logoutHandler=async()=>{
+          const log=await authService.logout(userData.data.accessToken)
+         if(log){
+            dispatch(logout())
+         }
     }
     
 

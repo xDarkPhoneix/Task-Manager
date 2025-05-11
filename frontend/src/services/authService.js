@@ -27,7 +27,7 @@ export class AuthService{
 
 
     async logout(accessToken){
-          console.log(accessToken);
+         
           
         const config={
             headers:{
@@ -35,7 +35,7 @@ export class AuthService{
             }
         }
         
-        const logout=axios.post(`${this.API_END_POINT}/users/logout`,config)
+        const logout=axios.post(`${this.API_END_POINT}/users/logout`,{},config)
 
         return logout;
 

@@ -18,10 +18,10 @@ const taskSchema=new Schema({
         type:Schema.Types.ObjectId,
         ref:"User"
     }
-
-
-
-
-})
+},
+{
+    timestamps:true
+}
+)
 
 export const Task=mongoose.model("Task",taskSchema)

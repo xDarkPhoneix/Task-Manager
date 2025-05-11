@@ -1,7 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function  TaskComp ({title="hola",}) {
-     
+function  TaskComp ({title="hola",status="To Do",id=""}) {
+     const navigate=useNavigate()
 
 
     return (
@@ -9,7 +10,7 @@ function  TaskComp ({title="hola",}) {
         <button 
         className='w-full flex items-center justify-center'
         onClick={()=>{
-         navigate(`/hackthons/${_id}`)
+         navigate(`/task/${id}`)
         }}
         >
         <div className='bg-slate-600  w-full m-2 gap-2  md:w-1/2 md:m-0 rounded-lg h-14 flex items-center justify-evenly '>
@@ -20,7 +21,7 @@ function  TaskComp ({title="hola",}) {
          </div>
          
         
-         {/* <div> {active ? (<div  className='bg-green-500 rounded-full h-3 w-3'></div>) : (<div className='bg-red-600 rounded-full h-3 w-3'></div>)} </div> */}
+         <div> {status ? (<div  className='font-semibold '>{status}</div>) : (<div className=''></div>)} </div>
          
          </div>
         
