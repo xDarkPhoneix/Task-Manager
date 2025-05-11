@@ -2,7 +2,7 @@ import axios from "axios"
 
 export class TaskService{
 
-     API_END_POINT="https://task-manager-sagg.onrender.com/api/v1"
+     API_END_POINT="https://task-manager-sagg.onrender.com/api/v1"                //"https://task-manager-sagg.onrender.com/api/v1"
 
      async getTask(userData){
         
