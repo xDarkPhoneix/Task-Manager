@@ -40,4 +40,9 @@ app.get("/",(req,res)=>{
 import userRouter from "./src/routes/user.routes.js"
 app.use("/api/v1/users",userRouter)
 
-//*****************   User Router                             ********************************/
+
+
+
+//*****************  Task Router                              ********************************/
+import taskRouter from "./src/routes/task.routes.js"
+app.use("/api/v1/task",taskRouter)

@@ -117,7 +117,7 @@ const loginUser=asynchandler(async (req,res)=>{
 
  const logOutuser=asynchandler(async(req,res)=>{
     
-    console.log(req.user);
+    console.log("byeee",req.user);
     
     const hola= await User.findByIdAndUpdate(req.user._id,
           {
