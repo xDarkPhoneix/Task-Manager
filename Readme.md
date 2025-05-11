@@ -37,6 +37,11 @@ npm install # (in Root directory also)
 # Start frontend and backend
 npm run dev
 
+#Changing Of Url in frontend 
+In authService and taskService change API_END_POINT to localhost
+#Changing Of Url in backend
+ change API_BASE_URL in .env
+
 
 #setup .env
 #Add Your Own database Uri and other keys

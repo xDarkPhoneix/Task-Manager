@@ -87,7 +87,7 @@ const updateTask=asynchandler(async(req,res)=>{
         throw new API_ERROR(400,"Failed to update Task")
     }  
 
-    res.status(201).json(new ApiResponse(200,"Task Updated Successfully"),updatedTask)
+    res.status(201).json(new ApiResponse(200,"Task Updated Successfully",updatedTask))
 })
 
 
